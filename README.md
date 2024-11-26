@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Aplikasi Manajemen Parkir
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikasi ini digunakan untuk memanage parkir, dengan fitur seperti pemilihan tempat parkir, durasi parkir, serta pengelolaan status parkir (terisi atau kosong). Aplikasi ini dibangun menggunakan ReactJS. Hasil dari aplikasi di publish pada website : [https://parkir.yogzsp.site/](https://parkir.yogzsp.site/)
 
-## Available Scripts
+## Prasyarat
 
-In the project directory, you can run:
+Sebelum memulai, pastikan Anda telah menginstal perangkat lunak berikut:
 
-### `npm start`
+- **Node.js** (Versi 16.x atau lebih baru) - [Unduh Node.js](https://nodejs.org/)
+- **npm** (Node Package Manager) - npm sudah terinstal secara otomatis bersama Node.js.
+- **Git** (Opsional, untuk meng-clone repositori).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Pastikan juga Anda memiliki akses ke editor kode seperti **Visual Studio Code** atau editor lain yang Anda pilih.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Langkah-langkah Instalasi
 
-### `npm test`
+Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini secara lokal:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone Repositori
 
-### `npm run build`
+Jika Anda belum memiliki salinan lokal dari aplikasi ini, clone repositori dari GitHub dengan perintah berikut:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/yogzsp/aplikasi-parkir.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Masuk Ke Directory
+Anda harus berada dalam direktori aplikasi-parkir untuk membuka directory dari program ini.
+```bash
+cd ./aplikasi-parkir/
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 3. Lakukan Instalasi Dependensi
+Aplikasi ini menggunakan beberapa dependensi untuk menjalankan backend dan frontend-nya. Jalankan perintah berikut untuk menginstal semua dependensi yang diperlukan:
+```bash
+npm install
+```
+### 4. Jalankan Program
+Setelah semua dependensi terinstal, jalankan aplikasi dengan perintah berikut:
+```bash
+npm start
+```
+Aplikasi akan berjalan di port 3000 secara default, dan dapat diakses melalui browser pada URL berikut:
+```
+http://localhost:3000/
+```
