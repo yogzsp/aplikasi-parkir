@@ -13,6 +13,8 @@ const App = () => {
   const [bookings, setBookings] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
+  const [selectedOccupiedSlot, setSelectedOccupiedSlot] = useState(null);
+
 
   const handleSearch = (searchText, vehicleSize) => {
     let filtered = slots;
@@ -39,14 +41,13 @@ const App = () => {
     let slotToBook = selectedSlot; // Gunakan slot yang dipilih
     if (!slotToBook) {
       // Jika tidak ada slot yang dipilih, cari slot yang tersedia secara otomatis
-      // console.log("hasil data", slots)
       slotToBook = slots.find((slot) => !slot.occupied);
     }
   
     if (slotToBook) {
       // Ambil waktu saat ini
-      const currentDateTime = new Date().toISOString().slice(0, 16); // Format YYYY-MM-DDTHH:mm
-      // console.log("waktunya ni",currentDateTime)
+      const currentDateTime = new Date().toISOString().slice(0, 16); 
+      
       // Perbarui data slot
       const updatedSlots = slots.map((slot) =>
         slot.id === slotToBook.id
@@ -68,7 +69,12 @@ const App = () => {
     }
 };
 
-  
+const handleOccupiedSlotClick = (slot) => {
+  setSelectedOccupiedSlot(slot);
+  setShowDetailModal(true);
+  console.log("hasil pilihan",)
+};
+
 
 const handleCancelBooking = (bookingId) => {
   // Cari pemesanan yang dibatalkan berdasarkan ID
@@ -105,7 +111,14 @@ const handleCancelBooking = (bookingId) => {
           <h1 className='text-white font-extrabold text-2xl mb-2'>Lokasi Tempat Parkir Mobil</h1>
           <div className=' w-full md:w-fit p-3 relative overflow-auto flex justify-start md:justify-center items-center border rounded-md'>
             {/* Denah Tempat Parkir */}
-            <ParkingMap slots={slots} filteredSlots={filteredSlots} selectedSlot={selectedSlot} onSlotSelect={handleSlotSelect}/>
+            <ParkingMap 
+              slots={slots} 
+              filteredSlots={filteredSlots} 
+              selectedSlot={selectedSlot} 
+              onSlotSelect={handleSlotSelect}
+              onSlotOccupiedClick={handleOccupiedSlotClick}
+              />
+
             <p className=' absolute left-2' style={{ writingMode: 'vertical-rl' }}>UTARA</p>
             <p className=' absolute left-80 bottom-2 ps-7'>BARAT</p>
             <p className=' absolute left-80 top-2 ps-8'>TIMUR</p>
@@ -129,7 +142,7 @@ const handleCancelBooking = (bookingId) => {
           />
         )}
 
-        {/* tampilan booking detail */}
+        {/* tampilan booking detail dari halaman konfirmasi*/}
         {bookings.length > 0 && showDetailModal && (
           <BookingDetails
             details={bookings[bookings.length - 1]}
@@ -137,6 +150,24 @@ const handleCancelBooking = (bookingId) => {
           />
         )}
       </div>
+      {/* tampilan booking detail dari teken map */}
+      {selectedOccupiedSlot && showDetailModal && (
+          <BookingDetails
+            details={{
+              slot: selectedOccupiedSlot.name,
+              vehicleSize: selectedOccupiedSlot.vehicleSize,
+              username: selectedOccupiedSlot.username,
+              duration: selectedOccupiedSlot.duration,
+              startTime: selectedOccupiedSlot.startTime,
+              vehicle: selectedOccupiedSlot.vehicle
+            }}
+            onClose={() => {
+              setShowDetailModal(false);
+              setSelectedOccupiedSlot(null);
+            }}
+          />
+        )}
+
       <Footer/>
     </>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stage, Layer, Rect, Text } from 'react-konva';
 
-const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect }) => {
+const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect,  onSlotOccupiedClick }) => {
   const contentHeight = Math.max(...slots.map((slot) => slot.y + 60));
   const contentWidth = Math.max(...slots.map((slot) => slot.x + 60));
 
@@ -17,6 +17,32 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect }) => {
 
           return (
             <React.Fragment key={slot.id}>
+                {/* Ikon Stop atau Parkir */}
+              {slot.occupied ? (
+                <Text
+                  x={slot.x}
+                  y={slot.y}
+                  width={60}
+                  height={60}
+                  text="🛑" // Gunakan emoji Stop
+                  fontSize={30}
+                  align="center"
+                  verticalAlign="middle"
+                />
+              ) : (
+                <Text
+                  x={slot.x}
+                  y={slot.y}
+                  width={60}
+                  height={60}
+                  text="P" // Simbol Parkir
+                  fontSize={30}
+                  fill="#FFFFFF"
+                  align="center"
+                  verticalAlign="middle"
+                />
+              )}
+
               {/* Tempat Parkir */}
               <Rect
                 x={slot.x}
@@ -32,10 +58,10 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect }) => {
                     ? '#00FF9C'
                     : 'gray' 
                 }
-                opacity={isActive ? 1 : 0.3} 
+                opacity={isActive ? 0.5 : 0.3} 
                 cornerRadius={10} 
-                onClick={() => !slot.occupied && onSlotSelect(slot)} 
-                onTap={() => !slot.occupied && onSlotSelect(slot)} 
+                onClick={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
+                onTap={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
               />
               {/* Nama Tempat Parkir */}
               <Text
@@ -47,6 +73,7 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect }) => {
                 align="center"
                 width={60}
               />
+
             </React.Fragment>
           );
         })}
