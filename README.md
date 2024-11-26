@@ -1,4 +1,4 @@
-# Aplikasi Manajemen Parkir
+# Aplikasi Manajemen Parkir Sederhana
 
 Aplikasi ini digunakan untuk memanage parkir, dengan fitur seperti pemilihan tempat parkir, durasi parkir, serta pengelolaan status parkir (terisi atau kosong). Aplikasi ini dibangun menggunakan ReactJS. Hasil dari aplikasi di publish pada website : [https://parkir.yogzsp.site/](https://parkir.yogzsp.site/)
 

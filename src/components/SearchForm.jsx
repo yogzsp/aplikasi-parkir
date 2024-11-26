@@ -31,7 +31,7 @@ const SearchForm = ({ onSearch }) => {
 
 
   return (
-    <nav className='w-full px-2 border-b-[1px] pb-4 border-gray-400'>
+    <nav className='w-full border-b-[1px] pb-4 border-gray-400 px-5 md:px-20'>
       <div className='grid grid-cols-5 my-3' id='header'>
         <div className=' col-span-2 md:col-span-1 w-full flex items-center' id="icons-page">
           <h1 className=' font-bold text-xl'>ParkingApps</h1>
@@ -46,7 +46,7 @@ const SearchForm = ({ onSearch }) => {
             />
         </div>
       </div>
-      
+
       <div className="flex gap-2 text-xs">
         <label
           className={`flex items-center p-2 rounded ${

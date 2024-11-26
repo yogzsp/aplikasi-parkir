@@ -4,6 +4,7 @@ import BookingForm from './components/BookingForm';
 import {BookingDetails,ConfirmationModal } from './components/BookingDetails';
 import SearchForm from './components/SearchForm';
 import dataParkir from './data/denah.json';
+import Footer from './components/Footer';
 
 const App = () => {
   const [slots, setSlots] = useState(dataParkir);
@@ -95,47 +96,49 @@ const handleCancelBooking = (bookingId) => {
   
 
   return (
-    <div className="container mx-auto p-4">
-      {/* Form Pencarian */}
+    <>
       <SearchForm onSearch={handleSearch} />
-      
-      <div className='text-center flex flex-col items-center mt-5'>
-        <h1 className='text-white font-extrabold text-2xl mb-2'>Lokasi Tempat Parkir</h1>
-        <div className=' w-full md:w-fit p-3 relative overflow-auto flex justify-start md:justify-center items-center border'>
-          <h1 className=' absolute left-2' style={{ writingMode: 'vertical-rl' }}>UTARA</h1>
-          <h1 className=' absolute left-80 bottom-2 ps-7'>BARAT</h1>
-          <h1 className=' absolute left-80 top-2 ps-8'>TIMUR</h1>
-          <h1 className=' absolute -right-96 md:right-2' style={{ writingMode: 'vertical-rl' }}>SELATAN</h1>
-          {/* Denah Tempat Parkir */}
-          <ParkingMap slots={slots} filteredSlots={filteredSlots} selectedSlot={selectedSlot} onSlotSelect={handleSlotSelect}/>
+      <div className="container mx-auto p-4">
+        {/* Form Pencarian */}
+        
+        <div className='text-center flex flex-col items-center mt-5'>
+          <h1 className='text-white font-extrabold text-2xl mb-2'>Lokasi Tempat Parkir Mobil</h1>
+          <div className=' w-full md:w-fit p-3 relative overflow-auto flex justify-start md:justify-center items-center border rounded-md'>
+            {/* Denah Tempat Parkir */}
+            <ParkingMap slots={slots} filteredSlots={filteredSlots} selectedSlot={selectedSlot} onSlotSelect={handleSlotSelect}/>
+            <p className=' absolute left-2' style={{ writingMode: 'vertical-rl' }}>UTARA</p>
+            <p className=' absolute left-80 bottom-2 ps-7'>BARAT</p>
+            <p className=' absolute left-80 top-2 ps-8'>TIMUR</p>
+            <p className=' absolute -right-96 md:right-2' style={{ writingMode: 'vertical-rl' }}>SELATAN</p>
+          </div>
+          {/* Form Pemesanan */}
+          <div className=' w-full xl:w-7/12 my-3'>
+            <h1 className=' text-2xl font-extrabold'>Formulir Parkir</h1>
+            <BookingForm onSubmit={handleBooking} />
+          </div>
         </div>
-        {/* Form Pemesanan */}
-        <div className=' w-full xl:w-7/12 my-3'>
-          <h1 className=' text-2xl font-extrabold'>Formulir Parkir</h1>
-          <BookingForm onSubmit={handleBooking} />
-        </div>
+
+        {/* Modal Konfirmasi Pembatalan */}
+        {bookings.length > 0 && showModal && (
+          <ConfirmationModal
+            onConfirm={(e)=>{
+              setShowDetailModal(true)
+              setShowModal(false)
+            }}
+            onCancel={() => handleCancelBooking(bookings[bookings.length - 1].id)}  // Pembatalan pemesanan
+          />
+        )}
+
+        {/* tampilan booking detail */}
+        {bookings.length > 0 && showDetailModal && (
+          <BookingDetails
+            details={bookings[bookings.length - 1]}
+            onClose={(e)=>setShowDetailModal(false)}
+          />
+        )}
       </div>
-
-      {/* Modal Konfirmasi Pembatalan */}
-      {bookings.length > 0 && showModal && (
-        <ConfirmationModal
-          onConfirm={(e)=>{
-            setShowDetailModal(true)
-            setShowModal(false)
-          }}
-          onCancel={() => handleCancelBooking(bookings[bookings.length - 1].id)}  // Pembatalan pemesanan
-        />
-      )}
-
-      {/* tampilan booking detail */}
-      {bookings.length > 0 && showDetailModal && (
-        <BookingDetails
-          details={bookings[bookings.length - 1]}
-          onClose={(e)=>setShowDetailModal(false)}
-        />
-      )}
-
-    </div>
+      <Footer/>
+    </>
   );
 };
 
