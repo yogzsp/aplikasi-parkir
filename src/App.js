@@ -38,14 +38,14 @@ const App = () => {
     let slotToBook = selectedSlot; // Gunakan slot yang dipilih
     if (!slotToBook) {
       // Jika tidak ada slot yang dipilih, cari slot yang tersedia secara otomatis
-      console.log("hasil data", slots)
+      // console.log("hasil data", slots)
       slotToBook = slots.find((slot) => !slot.occupied);
     }
   
     if (slotToBook) {
       // Ambil waktu saat ini
       const currentDateTime = new Date().toISOString().slice(0, 16); // Format YYYY-MM-DDTHH:mm
-      console.log("waktunya ni",currentDateTime)
+      // console.log("waktunya ni",currentDateTime)
       // Perbarui data slot
       const updatedSlots = slots.map((slot) =>
         slot.id === slotToBook.id
@@ -134,7 +134,6 @@ const handleCancelBooking = (bookingId) => {
           onClose={(e)=>setShowDetailModal(false)}
         />
       )}
-
 
     </div>
   );

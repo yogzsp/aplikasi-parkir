@@ -46,6 +46,7 @@ const SearchForm = ({ onSearch }) => {
             />
         </div>
       </div>
+      
       <div className="flex gap-2 text-xs">
         <label
           className={`flex items-center p-2 rounded ${
