@@ -24,7 +24,8 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect,  onSlotO
                   y={slot.y}
                   width={60}
                   height={60}
-                  text={ slot.occupied ? "🛑" : "P" }
+                  text={ slot.occupied 
+                    ? "🛑" : "P"  }
                   fontSize={30}
                   fill="#FFFFFF"
                   align="center"
@@ -38,15 +39,15 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect,  onSlotO
                 width={60}
                 height={60}
                 fill={
-                  slot.occupied
+                    !isActive
+                    ? 'gray' :
+                    slot.occupied
                     ? '#FA7070'
                     : isSelected
                     ? '#7AA2E3'
-                    : isActive
-                    ? '#00FF9C'
-                    : 'gray' 
+                    : '#00FF9C'
                 }
-                opacity={0.3} 
+                opacity={isActive ? 0.3 : 1} 
                 cornerRadius={10} 
                 onClick={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
                 onTap={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
