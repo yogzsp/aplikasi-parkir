@@ -70,9 +70,9 @@ const App = () => {
 };
 
 const handleOccupiedSlotClick = (slot) => {
+  // console.log("hasil pilihan",slot)
   setSelectedOccupiedSlot(slot);
   setShowDetailModal(true);
-  console.log("hasil pilihan",)
 };
 
 
