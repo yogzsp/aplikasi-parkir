@@ -41,7 +41,7 @@ const SearchForm = ({ onSearch }) => {
               type="text"
               value={searchText}
               onChange={handleTextChange}
-              className="border p-2 w-full rounded-md h-10"
+              className="border p-2 w-full rounded-md h-10 text-black"
               placeholder="Cari tempat parkir..."
             />
         </div>
