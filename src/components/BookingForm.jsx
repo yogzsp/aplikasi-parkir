@@ -39,7 +39,7 @@ const BookingForm = ({ onSubmit }) => {
         className="border p-2 w-full rounded-md text-black"
       />
       <button type="submit" className="bg-blue-900 text-white p-2 w-full rounded-md" data-modal-target="default-modal" data-modal-toggle="default-modal">
-        Pesan
+        Parkir
       </button>
     </form>
   );
