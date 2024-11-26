@@ -18,30 +18,18 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect,  onSlotO
           return (
             <React.Fragment key={slot.id}>
                 {/* Ikon Stop atau Parkir */}
-              {slot.occupied ? (
+              
                 <Text
                   x={slot.x}
                   y={slot.y}
                   width={60}
                   height={60}
-                  text="i"
-                  fontSize={30}
-                  align="center"
-                  verticalAlign="middle"
-                />
-              ) : (
-                <Text
-                  x={slot.x}
-                  y={slot.y}
-                  width={60}
-                  height={60}
-                  text="P"
+                  text={ slot.occupied ? "🛑" : "P" }
                   fontSize={30}
                   fill="#FFFFFF"
                   align="center"
                   verticalAlign="middle"
                 />
-              )}
 
               {/* Tempat Parkir */}
               <Rect
@@ -58,7 +46,7 @@ const ParkingMap = ({ slots, filteredSlots, selectedSlot, onSlotSelect,  onSlotO
                     ? '#00FF9C'
                     : 'gray' 
                 }
-                opacity={isActive ? 0.5 : 0.3} 
+                opacity={0.3} 
                 cornerRadius={10} 
                 onClick={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
                 onTap={() => slot.occupied ? onSlotOccupiedClick(slot) : onSlotSelect(slot)} 
